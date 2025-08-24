@@ -21,7 +21,7 @@ def connect_to_sheets():
         return None
 
 # -------------------------------
-# 📥 Load Data from "dynamic rates" sheet
+# 📥 Load Data from "Dynamic Rates" sheet
 # -------------------------------
 def load_data():
     try:
@@ -31,7 +31,7 @@ def load_data():
 
         sheet_url = "https://docs.google.com/spreadsheets/d/1Rx0pAtTL36ToWVctTA7bYUD-NIAXePJo2ycl5p3EcBM"
         sheet = client.open_by_url(sheet_url)
-        worksheet = sheet.worksheet("dynamic rates")
+        worksheet = sheet.worksheet("Dynamic Rates")
         data = worksheet.get_all_records()
         df = pd.DataFrame(data)
         return df, worksheet
@@ -91,7 +91,7 @@ st.markdown("""
 # 🔁 Refresh Button
 # -------------------------------
 if st.button("🔁 Refresh Data", type="primary"):
-    with st.spinner("🔄 Loading data from 'dynamic rates'..."):
+    with st.spinner("🔄 Loading data from 'Dynamic Rates'..."):
         time.sleep(1)
         df, worksheet = load_data()
         if not df.empty:
@@ -206,3 +206,4 @@ if 'df' in st.session_state:
 
 else:
     st.info("👆 Click 'Refresh Data' to load pricing data from Google Sheets.")
+
